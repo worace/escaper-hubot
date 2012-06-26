@@ -10,9 +10,11 @@ module.exports = (robot) ->
 
     robot.hear /yes/i, (msg) ->
       msg.send "I SHALL ADD IT TO THE LIST"
+      res.writeHead 200, {'Content-Type': 'text/plain'}
+      res.end "Message Sent"
 
     robot.hear /no/i, (msg) ->
       msg.send "IT SHALL BE STRICKEN FROM THE LIST"
+      res.writeHead 200, {'Content-Type': 'text/plain'}
+      res.end "Message Sent"
 
-    res.writeHead 200, {'Content-Type': 'text/plain'}
-    res.end "Message Sent"
