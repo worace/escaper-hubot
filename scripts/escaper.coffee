@@ -1,3 +1,5 @@
+require "../escape_robot.coffee"
+
 module.exports = (robot) ->
   robot.router.get "/photo/test", (req, res) ->
     params = require('url').parse(req.url, true)
@@ -8,10 +10,10 @@ module.exports = (robot) ->
     robot.messageRoom "515544", image
     robot.messageRoom "515544", "What do you think of this image for an escape?"
 
-    robot.hear /yes/i, (msg) ->
+    robot.hearOnce /yes/i, (msg) ->
       msg.send "I SHALL ADD IT TO THE LIST"
 
-    robot.hear /no/i, (msg) ->
+    robot.hearOnce /no/i, (msg) ->
       msg.send "IT SHALL BE STRICKEN FROM THE LIST"
 
     res.writeHead 200, {'Content-Type': 'text/plain'}
