@@ -7,13 +7,12 @@ module.exports = (robot) ->
     robot.logger.info "Request received to test image" + image
     robot.messageRoom "515544", image
     robot.messageRoom "515544", "What do you think of this image for an escape?"
-      robot.hear /yes/i, (msg) ->
-        msg.send "I SHALL ADD IT TO THE LIST"
-        res.writeHead 200, {'Content-Type': 'text/plain'}
-        res.end "Photo Accepted! Great Work!"
 
-      robot.hear /no/i, (msg) ->
-        msg.send "IT SHALL BE STRICKEN FROM THE LIST"
-        res.writeHead 200, {'Content-Type': 'text/plain'}
-        res.end "Photo Rejected!"
+    robot.hear /yes/i, (msg) ->
+      msg.send "I SHALL ADD IT TO THE LIST"
 
+    robot.hear /no/i, (msg) ->
+      msg.send "IT SHALL BE STRICKEN FROM THE LIST"
+
+    res.writeHead 200, {'Content-Type': 'text/plain'}
+    res.end "Message Sent"
